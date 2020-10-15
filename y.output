@@ -1,0 +1,180 @@
+Terminals unused in grammar
+
+   MAIN
+   PRINTLN
+   IF
+   FOR
+   CHAR
+   RETURN
+   VOID
+   FLOAT
+   INT
+   DOUBLE
+   ELSE
+   WHILE
+   ASSIGNOP
+   RELOP
+   LOGICOP
+   NOT
+   LTHIRD
+   INCOP
+   DECOP
+   COMMA
+   ID
+   newline
+   DO
+   BREAK
+   BITOP
+   LPAREN
+   RCURL
+   LCURL
+   RPAREN
+   RTHIRD
+   SEMICOLON
+   LOWER_THAN_ELSE
+
+
+Grammar
+
+    0 $accept: start $end
+
+    1 start: CONST_INT CONST_INT ADDOP
+    2      | CONST_INT CONST_INT MULOP
+    3      | CONST_FLOAT CONST_FLOAT ADDOP
+    4      | CONST_FLOAT CONST_FLOAT MULOP
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+MAIN (258)
+ADDOP (259) 1 3
+PRINTLN (260)
+IF (261)
+FOR (262)
+CHAR (263)
+RETURN (264)
+VOID (265)
+MULOP (266) 2 4
+FLOAT (267)
+INT (268)
+DOUBLE (269)
+ELSE (270)
+WHILE (271)
+ASSIGNOP (272)
+RELOP (273)
+LOGICOP (274)
+NOT (275)
+LTHIRD (276)
+INCOP (277)
+DECOP (278)
+COMMA (279)
+CONST_FLOAT (280) 3 4
+CONST_INT (281) 1 2
+ID (282)
+newline (283)
+DO (284)
+BREAK (285)
+BITOP (286)
+LPAREN (287)
+RCURL (288)
+LCURL (289)
+RPAREN (290)
+RTHIRD (291)
+SEMICOLON (292)
+LOWER_THAN_ELSE (293)
+
+
+Nonterminals, with rules where they appear
+
+$accept (39)
+    on left: 0
+start (40)
+    on left: 1 2 3 4, on right: 0
+
+
+State 0
+
+    0 $accept: . start $end
+
+    CONST_FLOAT  shift, and go to state 1
+    CONST_INT    shift, and go to state 2
+
+    start  go to state 3
+
+
+State 1
+
+    3 start: CONST_FLOAT . CONST_FLOAT ADDOP
+    4      | CONST_FLOAT . CONST_FLOAT MULOP
+
+    CONST_FLOAT  shift, and go to state 4
+
+
+State 2
+
+    1 start: CONST_INT . CONST_INT ADDOP
+    2      | CONST_INT . CONST_INT MULOP
+
+    CONST_INT  shift, and go to state 5
+
+
+State 3
+
+    0 $accept: start . $end
+
+    $end  shift, and go to state 6
+
+
+State 4
+
+    3 start: CONST_FLOAT CONST_FLOAT . ADDOP
+    4      | CONST_FLOAT CONST_FLOAT . MULOP
+
+    ADDOP  shift, and go to state 7
+    MULOP  shift, and go to state 8
+
+
+State 5
+
+    1 start: CONST_INT CONST_INT . ADDOP
+    2      | CONST_INT CONST_INT . MULOP
+
+    ADDOP  shift, and go to state 9
+    MULOP  shift, and go to state 10
+
+
+State 6
+
+    0 $accept: start $end .
+
+    $default  accept
+
+
+State 7
+
+    3 start: CONST_FLOAT CONST_FLOAT ADDOP .
+
+    $default  reduce using rule 3 (start)
+
+
+State 8
+
+    4 start: CONST_FLOAT CONST_FLOAT MULOP .
+
+    $default  reduce using rule 4 (start)
+
+
+State 9
+
+    1 start: CONST_INT CONST_INT ADDOP .
+
+    $default  reduce using rule 1 (start)
+
+
+State 10
+
+    2 start: CONST_INT CONST_INT MULOP .
+
+    $default  reduce using rule 2 (start)

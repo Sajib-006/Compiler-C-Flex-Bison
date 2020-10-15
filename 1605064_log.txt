@@ -1,0 +1,4 @@
+Line at 1 : CONST_FLOAT CONST_FLOAT MULOP
+
+5.5 * 5.5=
+
