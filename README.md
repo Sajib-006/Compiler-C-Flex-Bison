@@ -1,6 +1,6 @@
 # Compiler-C-Flex-Bison
-#To run the program flex and bison has to be installed in linux operating system(ubuntu).
-#run the sript.sh file.
+## To run the program flex and bison has to be installed in linux operating system(ubuntu).
+## Run the sript.sh file using <code>bash script.sh </code> command
 
 Here is the script.sh file:
 
